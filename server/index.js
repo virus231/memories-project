@@ -5,11 +5,12 @@ const cors = require('cors')
 const postRoutes = require('./routes/posts')
 
 const app = express();
-app.use('/posts', postRoutes)
 
 app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 app.use(cors)
+
+app.use('/posts', postRoutes)
 
 const CONNECTION_URL = 'mongodb+srv://User:mama231098@cluster0.dm9bk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000
